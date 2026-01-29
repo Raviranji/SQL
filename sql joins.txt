@@ -1,0 +1,111 @@
+create table first(
+Id int auto_increment,
+RollNumber varchar(255),
+Name varchar(255),
+Email varchar(255),
+PhoneNumber varchar(255),
+primary key (Id)
+);
+create table second(
+Id int auto_increment,
+RollNumber varchar(255),
+Tamil varchar(255),
+English varchar(255),
+Maths varchar(255),
+Science varchar(255),
+Social varchar(255),
+primary key (Id)
+);
+select *from first;
+select *from second;
+insert into first (RollNumber,Name,Email,PhoneNumber) values ("1919193","Sugavanesh","abc12@gmail.com","9360744851");
+insert into first (RollNumber,Name,Email,PhoneNumber) values ("1919194","Sujitha","abd12@gmail.com","9360744872");
+insert into first (RollNumber,Name,Email,PhoneNumber) values ("1919195","Suriya","abe12@gmail.com","9360789051");
+insert into first (RollNumber,Name,Email,PhoneNumber) values ("1919196","vaisanthika","abt12@gmail.com","9364544851");
+insert into first (RollNumber,Name,Email,PhoneNumber) values ("1919197","varshini","abu12@gmail.com","9160744851");
+insert into first (RollNumber,Name,Email,PhoneNumber) values ("1919198","vishal","abp12@gmail.com","9165744851");
+insert into first (RollNumber,Name,Email,PhoneNumber) values ("1919199","vanbalan","abg12@gmail.com","916074851");
+insert into first (RollNumber,Name,Email,PhoneNumber) values ("1919180","yamuna","abz12@gmail.com","9160544851");
+insert into first (RollNumber,Name,Email,PhoneNumber) values ("1919181","jeeva","abm12@gmail.com","9160787851");
+insert into first (RollNumber,Name,Email,PhoneNumber) values ("1919182","gokul","abn12@gmail.com","8160744851");
+
+
+insert into second (RollNumber,Tamil,English,Maths,Science,Social) values ("1919193","89","75","90","98","90");
+insert into second (RollNumber,Tamil,English,Maths,Science,Social) values ("1919194","80","70","99","98","90");
+insert into second (RollNumber,Tamil,English,Maths,Science,Social) values ("1919195","84","72","98","98","90");
+insert into second (RollNumber,Tamil,English,Maths,Science,Social) values ("1919196","86","71","96","98","90");
+insert into second (RollNumber,Tamil,English,Maths,Science,Social) values ("1919197","80","70","99","98","90");
+insert into second (RollNumber,Tamil,English,Maths,Science,Social) values ("1919198","82","76","94","98","90");
+insert into second (RollNumber,Tamil,English,Maths,Science,Social) values ("1919199","87","77","100","98","90");
+insert into second (RollNumber,Tamil,English,Maths,Science,Social) values ("1919180","86","79","100","98","90");
+insert into second (RollNumber,Tamil,English,Maths,Science,Social) values ("1919181","84","80","99","98","90");
+insert into second (RollNumber,Tamil,English,Maths,Science,Social) values ("1919182","81","100","93","98","90");
+
+
+create table third(
+Id int auto_increment,
+RollNumber varchar(255),
+Name varchar(255),
+Email varchar(255),
+PhoneNumber varchar(255),
+primary key (Id)
+);
+
+select * from third;
+insert into third (RollNumber,Name,Email,PhoneNumber) values ("1919193","Sugavanesh","abc12@gmail.com","9360744851");
+insert into third (RollNumber,Name,Email,PhoneNumber) values ("1919172","Sachinkumar","avx12@gmail.com","9360789951");
+insert into third (RollNumber,Name,Email,PhoneNumber) values ("1919195","Suriya","abe12@gmail.com","9360789051");
+insert into third (RollNumber,Name,Email,PhoneNumber) values ("1919175","Saranya","ayug12@gmail.com","93609051");
+insert into third (RollNumber,Name,Email,PhoneNumber) values ("1919197","varshini","abu12@gmail.com","9160744851");
+insert into third (RollNumber,Name,Email,PhoneNumber) values ("1919176","sanju","hjsd@gmail.com","9678744851");
+insert into third (RollNumber,Name,Email,PhoneNumber) values ("1919199","vanbalan","abg12@gmail.com","916074851");
+insert into third (RollNumber,Name,Email,PhoneNumber) values ("1919177","sakthi","cghfshgas@gmail.com","916071251");
+insert into third (RollNumber,Name,Email,PhoneNumber) values ("1919182","gokul","abn12@gmail.com","8160744851");
+insert into third (RollNumber,Name,Email,PhoneNumber) values ("1919178","gopi","abn898@gmail.com","8160744131");
+
+
+
+
+
+delete from first where Id between '11' and '20';
+
+1.cross join:
+
+select * from first cross join third;
+select * from first cross join second;
+
+
+2.inner join:
+
+SELECT A.RollNumber,A.Name
+FROM first AS A
+INNER JOIN third AS B
+ON B.Name = A.Name;
+
+
+3.left join:
+
+select *
+FROM third  AS A
+left JOIN first AS B
+ON B.Name = A.Name;
+
+4.right join:
+
+select *
+FROM third  AS A
+right JOIN first AS B
+ON B.Name = A.Name;
+
+
+5.full join:
+
+select *
+FROM third  
+left JOIN first 
+ON third.Name = first.Name
+UNION
+select *
+FROM third
+right JOIN first 
+ON third.Name = first.Name;

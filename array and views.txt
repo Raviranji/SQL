@@ -1,0 +1,48 @@
+-- array:
+-- 	single variable(column)-->to store multiple data.  
+-- 	mysql doesn't support array.but array using techniques like json.
+-- 	index value starts from zero;
+[]
+
+-- json_extract 
+-- json_length
+
+
+CREATE TABLE example (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    data JSON
+);
+
+arun , course-->mern,da,ds,fs
+
+insert into example(data)values('["mern","DA","DS","FS"]');
+
+
+select * from example;
+
+select json_extract(data,'$[3]') as course from example;
+
+select json_length(data) as count from example;
+
+view:
+   
+syntax:
+
+create view viewname as select statement;
+
+example:
+
+create view v1 as select json_extract(data,'$[3]') as course from example;
+
+select * from v1;
+
+drop:
+
+syntax:
+
+drop view viewname;
+
+example:
+
+drop view v1;
+

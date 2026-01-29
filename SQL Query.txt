@@ -1,0 +1,57 @@
+If you're serious about learning SQL for data analysis, interviews, or real-world use — follow this roadmap 💻📊
+
+1. Understand What SQL Is  
+– Structured Query Language used to query and manipulate databases.
+
+2. Set Up a SQL Environment  
+– Use platforms like MySQL, PostgreSQL, SQLite, or practice online (LeetCode, Mode Analytics).
+
+3. Learn Basic SQL Commands  
+– SELECT, FROM, WHERE, ORDER BY, LIMIT
+
+4. Filtering & Sorting Data  
+– Use WHERE, AND, OR, BETWEEN, IN, LIKE, IS NULL
+
+5. Aggregate Functions  
+– COUNT(), SUM(), AVG(), MIN(), MAX()
+
+6. GROUP BY and HAVING  
+– Group data and filter aggregated results
+
+7. JOINs (Very Important!)  
+– INNER JOIN, LEFT JOIN, RIGHT JOIN, FULL OUTER JOIN
+
+8. Subqueries  
+– Write queries inside queries for complex filtering
+
+9. Window Functions  
+– RANK(), ROW_NUMBER(), DENSE_RANK(), LEAD(), LAG(), OVER()
+
+10. CTEs (Common Table Expressions)  
+– Use WITH to simplify nested queries
+
+11. UNION and INTERSECT  
+– Combine results from multiple queries
+
+12. CASE Statements  
+– Add conditional logic in queries
+
+13. Data Cleaning with SQL  
+– Remove duplicates, handle NULLs, use string/date functions
+
+14. Indexes and Performance
+– Basics of indexing and query optimization
+
+15. SQL for Analytics Projects  
+– Sales analysis, churn detection, cohort analysis, funnel tracking
+
+16. Practice Real-World Problems  
+– Use platforms like LeetCode, StrataScratch, HackerRank, Mode
+
+17. Document and Save Your Queries  
+– Share on GitHub with explanations
+
+18. Build SQL Dashboards (Optional)  
+– Connect SQL with Power BI, Tableau, or Metabase
+
+🎯 Goal: Be able to answer business questions confidently using clean, readable SQL.

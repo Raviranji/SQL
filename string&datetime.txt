@@ -1,0 +1,96 @@
+
+string function:(scalar)
+
+1.upper
+2.lower 
+3.trim  
+4.length  
+5.mid  
+6.left   
+7.right   
+8.concat  
+9.replace  
+10.substring
+
+
+
+CREATE TABLE Students1( Name VARCHAR(50));
+
+INSERT INTO Students1 VALUES ('Dhanush'), ('SURYA'), ('vikram'),('pavithra'),('karthi');
+
+select * from students1;
+
+select name,upper(name) as upper_value,
+	    lower(name) as lower_value,
+	    trim(name) as trim_value,
+	    length(name) as length_value from students1;
+
+select name,mid(name,2,3) as mid_value,
+	    left(name,2) as left_value,
+	    right(name,3) as right_value from students1;
+
+select name,concat(name,"sql") as join_value from students1;
+
+select name,replace(name,"pavithra","gokilavani") as replace_value from  students1
+where name="pavithra";
+
+select name,substring(name,2,3) as value from students1;
+			
+
+datetime function:
+
+1.now() 
+2.curdate()
+3.curtime()
+4.date 
+5.time 
+6.year 
+7.monthname  
+8.day  
+9.datediff  
+10.date_add   
+11.date_sub
+
+
+CREATE TABLE Events (
+    Event_ID INT PRIMARY KEY,
+    Event_Name VARCHAR(100),
+    Event_Date DATETIME);
+
+
+select * from Events;
+
+
+INSERT INTO Events (Event_ID, Event_Name, Event_Date)
+VALUES 
+(1, 'Independence Day', '2025-08-15 09:00:00'),
+(2, 'New Year Party', '2026-01-01 00:00:00'),
+(3, 'College Fest', '2025-11-20 18:30:00'),
+(4, 'Project Submission', '2025-06-10 23:59:59');
+
+select now();
+
+select curdate();
+
+select curtime();
+
+select event_name,event_date,date(event_date) as date,
+			     year(event_date) as year,
+		             time(event_date) as time,
+			     monthname(event_date) as month, 
+			     day(event_date) as day,
+			     DATEDIFF(event_date,current_date()) as difference from events;
+
+select event_name,event_date,date_add(event_date,interval 7 day) as one_week_later,
+			     date_sub(event_date,interval 3 day) as three_days_before from events;
+
+
+
+select event_name,event_date,date_format(event_date,'%d-%m-%y %h:%i')as formatted_date from events;
+
+%d-->date  
+%m-->month  
+%y-->year  
+%h-->hour  
+%i-->minutes  
+%s-->seconds

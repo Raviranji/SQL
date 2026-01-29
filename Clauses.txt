@@ -1,0 +1,80 @@
+clauses:
+
+1.order by-->sorting(asc/desc)
+2.group by-->group same values,(aggregate function)  
+3.having-->condition after grouping  
+4.limit-->number of rows  
+5.between-->range check
+
+
+create table employees1(emp_id int primary key auto_increment , name varchar(50),dept varchar(50), salary int);
+
+insert into employees1( name, dept, salary)
+            values("anand","IT",55000),
+            ("arun","HR",40000),
+            ("Barathi","IT",60000),
+            ("Elango","IT",35000),
+            ("Gokul","HR",45000),
+            ("Harsha","finance",50000),
+            ("Indra","IT",55000),
+            ("Logitha","HR",30000),
+            ("rina","finance",70000);
+
+select * from employees1;
+
+order by:
+
+syntax:
+
+select columname from tablename order by columnname asc|desc;
+
+example:
+
+select * from employees1 order by salary desc;
+
+group by:
+
+syntax:
+
+select columnname ,aggregatefunction(column) from tablename group by column;
+
+example:
+
+select dept,count(*) from employees1 group by dept;
+
+having:
+
+syntax:
+
+select columnname ,aggregatefunction(column) from tablename 
+group by column having condition;
+
+example:
+
+select dept,count(*) from employees1 group by dept having count(*)>=3;
+
+limit:
+
+syntax:
+
+select * from tablename limit number;
+
+example:
+
+select * from employees1 where dept='it' limit 3;
+
+between/not between:
+
+syntax:
+
+select * from tablename where condition between value1 and value2;
+
+example:
+
+(between):
+
+select * from employees1 where salary between 20000 and 40000;
+
+(not between):
+
+select * from employees1 where salary not between 20000 and 40000;

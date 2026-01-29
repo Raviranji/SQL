@@ -1,0 +1,137 @@
+Normalization is a database design technique used to organize data in a relational database efficiently and reduce redundancy, anomalies, and data inconsistencies. The process involves breaking down a large table into smaller, more manageable tables, linked together through relationships. The goal of normalization is to ensure data integrity and improve database performance by eliminating data duplication and maintaining data dependencies.
+
+There are several normal forms in database normalization, commonly referred to as First Normal Form (1NF), Second Normal Form (2NF), Third Normal Form (3NF), and so on. Each normal form builds upon the previous one, introducing specific rules to structure the data properly.
+
+First Normal Form (1NF)  :
+
+Let's go step-by-step through the process:
+
+
+Step 1: Create the "Students" table:
+
+CREATE TABLE Students (
+    Student_ID INT PRIMARY KEY,
+    Student_Name VARCHAR(50)
+);
+
+
+Step 2: Insert data into the "Students" table:
+
+INSERT INTO Students (Student_ID, Student_Name)
+VALUES
+    (1, 'John'),
+    (2, 'Jane'),
+    (3, 'Mike');
+
+Step 3: Create the "Courses" table:
+
+CREATE TABLE Courses (
+    Course_ID INT PRIMARY KEY AUTO_INCREMENT,
+    Course_Name VARCHAR(50)
+);
+
+
+Step 4: Insert data into the "Courses" table:
+
+INSERT INTO Courses (Course_Name)
+VALUES
+    ('Math'),
+    ('Science'),
+    ('History'),
+    ('English');
+
+
+Step 5: Create the "StudentCourses" table (to establish the many-to-many relationship):
+
+CREATE TABLE StudentCourses (
+    Student_ID INT,
+    Course_ID INT,
+    PRIMARY KEY (Student_ID, Course_ID),
+    FOREIGN KEY (Student_ID) REFERENCES Students(Student_ID),
+    FOREIGN KEY (Course_ID) REFERENCES Courses(Course_ID)
+);
+
+Step 6: Insert data into the "StudentCourses" table:
+
+INSERT INTO StudentCourses (Student_ID, Course_ID)
+VALUES
+    (1, 1), -- John enrolled in Math
+    (1, 2), -- John enrolled in Science
+    (2, 3), -- Jane enrolled in History
+    (2, 1), -- Jane enrolled in Math
+    (2, 4), -- Jane enrolled in English
+    (3, 2); -- Mike enrolled in Science
+
+
+SELECT Students.Student_Name, Courses.Course_Name
+FROM Students
+JOIN StudentCourses ON Students.Student_ID = StudentCourses.Student_ID
+JOIN Courses ON StudentCourses.Course_ID = Courses.Course_ID;
+
+Second Normal Form (2NF) :
+
+Query 1: Create the "Orders" Table
+
+CREATE TABLE Orders (
+    Order_ID INT PRIMARY KEY,
+    Order_Date DATE NOT NULL,
+    Customer_ID VARCHAR(4) NOT NULL
+);
+
+INSERT INTO Orders (Order_ID, Order_Date, Customer_ID)
+VALUES
+    (1, '2023-07-15', 'C001'),
+    (2, '2023-07-16', 'C002'),
+    (3, '2023-07-17', 'C003');
+
+Query 2: Create the "Products" Table
+
+CREATE TABLE Products (
+    Product_ID INT PRIMARY KEY,
+    Product_Name VARCHAR(50) NOT NULL
+);
+
+INSERT INTO Products (Product_ID, Product_Name)
+VALUES
+    (101, 'Laptop'),
+    (102, 'Mouse'),
+    (103, 'Keyboard'),
+    (104, 'Monitor');
+
+SELECT o.Order_ID, o.Order_Date, o.Customer_ID, c.Customer_Name
+FROM Orders o
+JOIN Order_Details od ON o.Order_ID = od.Order_ID
+JOIN Customers c ON o.Customer_ID = c.Customer_ID;
+
+Step 3: Create the "Order_Details" Table
+
+
+CREATE TABLE Order_Details (
+    Order_ID INT,
+    Product_ID INT,
+    Order_Date DATE,
+    Customer_ID VARCHAR(4),
+    PRIMARY KEY (Order_ID, Product_ID)
+);
+
+INSERT INTO Order_Details (Order_ID, Product_ID, Order_Date, Customer_ID)
+VALUES
+    (1, 101, '2023-07-15', 'C001'),
+    (1, 102, '2023-07-15', 'C001'),
+    (2, 101, '2023-07-16', 'C002'),
+    (2, 103, '2023-07-16', 'C002'),
+    (3, 104, '2023-07-17', 'C003');
+
+Step 4: Create the "Customers" Table
+
+
+CREATE TABLE Customers (
+    Customer_ID VARCHAR(4) PRIMARY KEY,
+    Customer_Name VARCHAR(50) NOT NULL
+);
+
+INSERT INTO Customers (Customer_ID, Customer_Name)
+VALUES
+    ('C001', 'John'),
+    ('C002', 'Sarah'),
+    ('C003', 'Michael');

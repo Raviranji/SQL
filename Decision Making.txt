@@ -1,0 +1,78 @@
+Decision Making:
+
+Conditional Statements: MySQL provides conditional statements that can be 
+used in queries to make decisions based on data values. These include:
+
+IF statements
+CASE statements
+Conditional expressions using operators like =, >, <, BETWEEN, etc.
+
+1. IF Statement:
+
+The IF statement is used to perform conditional logic within a query.
+It evaluates a condition and returns a specific value based on whether 
+the condition is true or false.
+
+Syntax:
+
+SELECT IF(condition, value_if_true, value_if_false);
+
+2. CASE Statement:
+
+The CASE statement provides more flexibility than the IF statement and 
+is similar to a switch-case structure in programming. It allows you to 
+evaluate multiple conditions and return different values based on which 
+condition is met.
+
+Syntax:
+
+SELECT 
+    CASE 
+        WHEN condition1 THEN result1
+        WHEN condition2 THEN result2
+        ...
+        ELSE default_result
+    END
+AS alias_name;
+
+
+
+
+CREATE TABLE students (
+    student_id INT PRIMARY KEY,
+    name VARCHAR(100),
+    grade DECIMAL(5, 2)
+);
+
+
+INSERT INTO students (student_id, name, grade) VALUES
+(1, 'Alice', 85.5),
+(2, 'Bob', 92.0),
+(3, 'Charlie', 78.0),
+(4, 'David', 88.5),
+(5, 'Eve', 95.0);
+
+select * from students;
+
+if statement:
+
+select student_id,name,grade,if(grade>70,'pass','Fail') as status from students;
+
+
+case statement:
+
+select student_id,name,grade,
+case 
+	when grade>90 then 'excellent'
+	when grade>80 then 'good'
+	else 'average'
+end as category, 
+if(grade>70,'pass','Fail') as status
+from students;
+
+
+
+
+
+
+

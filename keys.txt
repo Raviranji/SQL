@@ -1,0 +1,68 @@
+keys:
+1.primary key
+2.unique key
+3.foreign key
+
+create table student(stud_Id int primary key auto_increment,
+                     name varchar(250),
+                     course varchar(100),
+                     phno int)auto_increment=100;
+insert into student(name,course,phno)
+values("arun","DA",907966756),
+	  ("anu","DS",757689789),
+	  ("sathya","DA",9786754),
+	  ("vinu","DA",907896876);
+
+
+select * from student;
+
+alter:
+1.add
+2.drop
+3.modify
+4.rename
+
+1.add:
+
+syntax:
+
+alter table tablename add columnname datatype;
+
+example:
+
+alter table student add email varchar(250);
+
+2.drop:
+
+syntax:
+
+alter table tablename drop column columnname;
+
+example:
+
+alter table student drop column email;
+
+3.modify:
+
+syntax:
+
+alter table tablename modify column columnname datatype;
+
+example:
+
+alter table student modify column phno bigint;
+
+4.rename:
+
+syntax:
+
+alter table tablename rename column old_column_name to new_column_name;
+
+example:
+
+alter table student rename column phno to contactno;
+
+drop table student;
+
+
+
